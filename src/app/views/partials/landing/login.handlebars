@@ -1,0 +1,149 @@
+<div id="loginModalFile" class="modal dark darken-3 scale-transition scale-in">
+    <section id="forgotpassword-success" class="hide">
+        <div class="modal-content">
+            <div class="container center">
+                <h4 class="title"> Recupere a sua Conta!</h4>
+                <span class="grey-text text-lighten-1">
+                    Um email de recuperação de conta foi enviado para:
+                </span>
+                <br>
+                <span id="forgotpassword-success-email" class="grey-text text-lighten-2"></span>
+            </div>
+        </div>
+        <div class="center">
+            <img class="responsive-img" src="/static/modules/images/modals/register/lowkey-register.png">
+        </div>
+        <br><br>
+    </section>
+    <form id="forgotpassword-form" class="hide">
+        <div class="modal-content">
+            <div class="modal-header center"> <br>
+                <h4 class="title center">Recupere a sua conta!</h4>
+                <span class="grey-text center">Recupere a sua conta hoje</span>
+            </div>
+        </div>
+        <div class="row container white-text">
+            <div class="col s12 m6 l6">
+                <div class="row"> <br> <br>
+                    <div class="input-field col s12">
+                        <input id="forgotpassword-name" name="forgotpassword-ianemail" type="text" class="white-text"
+                            maxlength="100" onkeyup="forgotPasswordCardinal()">
+                        <label for="forgotpassword-name" class="white-label darken-3">Nome de Utilizador ou Email</label>
+                        <span id="forgotpassword-name-info" class="helper-text red-text"></span>
+                    </div>
+                    <div class="input-field col s12">
+                        <span class="helper-text grey-text center">
+                            <i class="material-icons" style="vertical-align: middle">error_outline</i>
+                            O Email de recuperação só é válido durante 30 minutos!
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m5 l5 hide-on-small-and-down container right"> <br>
+                <img class="responsive-img right"
+                    src="/static/modules/images/modals/forgot-password/forgot-password.png">
+            </div>
+            <div class="col s12 row">
+                <div class="col s2 m2 l2 left">
+                    <a id="forgotpassword-goback" class="btn-floating btn-large waves-effect waves-black button hoverable dark darken-2">
+                        <i class="material-icons">arrow_back</i>
+                    </a>
+                </div>
+                <div class="col s10 m4 l4 left">
+                    <button type="submit" id="forgotpassword-btn" class="btn-flat left center outline-primary rounded bold primary-text disabled">
+                        <i class="material-icons-outlined left">exit_to_app</i>
+                        RECUPERAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form id="twofa-form" class="hide">
+        <div class="modal-content">
+            <div class="modal-header center"> <br>
+                <h4 class="title center">Verifique a sua conta!</h4>
+                <span class="grey-text center">Insira o codigo de segurança que foi enviado para o seu email!</span>
+            </div>
+            <div class="row container white-text">
+                <div class="col s12 m6 l6">
+                    <div class="row"> <br> <br> <br>
+                        <div class="input-field col s12">
+                            <input id="twofa-code" name="twofa-code" type="text" class="white-text" maxlength="9"
+                                data-length="9" onkeyup="twoFAcardinal()">
+                            <label for="twofa-code" class="white-label darken-3">Codigo de Verificação</label>
+                            <span id="twofa-code-info" class="helper-text red-text"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5 l5 hide-on-small-and-down container right"> <br>
+                    <img class="responsive-img right" src="/static/modules/images/modals/2fa/lowkey-2fa.png">
+                </div>
+                <div class="col s12 row">
+                    <div class="col s2 m2 l2 left">
+                        <a id="twofa-goback" class="btn-floating btn-large waves-effect waves-black button hoverable dark darken-2">
+                            <i class="material-icons">arrow_back</i>
+                        </a>
+                    </div>
+                    <div class="col s10 m4 l4 left">
+                         <button type="submit" id="twofa-btn" class="btn-flat left center outline-primary rounded bold primary-text disabled">
+                            <i class="material-icons-outlined left">exit_to_app</i>
+                            VERIFICAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form id="login-form">
+        <div class="modal-content">
+            <div class="center">
+                <h4 class="center title">Boas-vindas!</h4>
+                <span class="center grey-text ">Estamos muito animados em te ver novamente!</span>
+            </div>
+            <div class="row container white-text"> <br>
+                <div class="col s12 m8 l8">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="login-name" name="login-name" type="text" maxlength="100" onkeyup="loginCardinal()">
+                            <label for="login-name" class="white-label darken-3">Nome de Utilizador ou Email</label>
+                            <span id="login-name-info" class="helper-text red-text"></span>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="login-password" name="login-password" type="password" onkeyup="loginCardinal()">
+                            <label for="login-password" class="white-label darken-3">Palavra-passe</label>
+                            <span id="login-password-info" class="helper-text red-text"></span>
+                            <p class="helper-text grey-text" style="display: inline-flex !important;">
+                                <a id="login-goforgotpassword" style="cursor: pointer;" class="helper-text primary-text">Esqueceu-se da palavra-passe?</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4 l4 hide-on-small-and-down">
+                    <img class="responsive-img right" src="/static/modules/images/modals/login/lowkey-login.png" style="max-width: 85%;">
+                </div>
+                <div class="col s12 m8 row">
+                    <div class="col s6">
+                        <button type="reset" class="left btn-flat outline error rounded bold error-text">
+                            <i class="material-icons left">close</i>
+                            LIMPAR
+                        </a>
+                    </div>
+                    <div class="col s6">
+                        <button type="submit" id="login-btn" class="btn-flat left center outline-primary rounded bold primary-text disabled">
+                            <i class="material-icons-outlined left">exit_to_app</i>
+                            ENTRAR
+                        </button>
+                    </div>
+                    <div class="col s12">
+                        <div class="input-field center">
+                            <p class="helper-text grey-text" style="display: inline-flex !important;"> Ainda não têm
+                                conta? 
+                                <a id="login-goregister" style="cursor: pointer;" class="helper-text primary-text">Registre-se</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

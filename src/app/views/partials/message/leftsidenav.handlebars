@@ -1,0 +1,97 @@
+<ul id="left-sidenav" class="sidenav sidenav-fixed dark darken-2 remove boxshadow to-front">
+    <li>
+        <div class="user-view">
+            <div class="background">
+            </div>
+            <a>
+                <img id="profileImage" class="materialboxed circle profile status {{profile.status}}" data-caption="Foto de perfil de @{{ profile.ian }} - {{ profile.name }}" src="/static/uploads/{{profile.picture}}">
+            </a>
+            <a id="profileName" href="#name" class="remove click">
+                <span class="white-text name">{{profile.name}}</span>
+            </a>
+            <a id="profileIAN" href="#email" class="remove click">
+                <span class="white-text email">@{{profile.ian}}</span>
+            </a>
+            <a id="ping" class="btn-flat rounded tooltipped" onmouseover="getCurrentRTCLatency();" data-position="right" data-tooltip="0 ms!"><i class="material-icons-outlined tiny-btn">signal_cellular_alt</i></a>
+        </div>
+    </li>
+    <li class="remove padding">
+        {{#if profile.admin }}
+            <div class="actions remove padding">
+                {{#if appBuild}}
+                    <a href="/admin/build-dist" class="btn-flat use all width">
+                {{else}}
+                    <a href="/admin" class="btn-flat use all width">
+                {{/if}}
+                    <i class="material-icons-outlined left">developer_board</i>
+                    Administração
+                </a>
+            </div>
+        {{/if}}
+        <div class="actions active remove padding">
+            <a id="btn-conversations" dataTarget="conversations" class="btn-flat use all width">
+                <i class="material-icons-outlined left">chat</i>
+                Conversas
+            </a>
+        </div>
+        <div class="actions remove padding">
+            <a id="btn-homepage" dataTarget="homepage" class="btn-flat use all width">
+                <i class="material-icons-outlined left">people</i>
+                Amigos
+            </a>
+        </div>
+        <div class="actions remove padding">
+            <a id="btn-changestatus" class="btn-flat use all width dropdown-trigger"  data-target="status-dropdown">
+                <i class="material-icons-outlined left">public</i>
+                ALTERAR ESTADO
+            </a>
+        </div>
+        <div class="actions remove padding">
+            <a id="btn-settings" dataTarget="settings" class="btn-flat use all width">
+                <i class="material-icons-outlined left">settings</i>
+                Definições
+            </a>
+        </div>
+    </li>
+    <li class="remove-sidenav-line"><br><div class="divider"></div><br></li>
+    <li>
+        <div class="actions outline error remove padding">
+            {{#if appBuild}}
+                <a class="btn-flat use all width" onclick="distLogout();">
+            {{else}}
+                <a class="btn-flat use all width" onclick="Logout();">
+
+            {{/if}}
+                <i class="material-icons-outlined left">exit_to_app</i>
+                Terminar Sessão
+            </a>
+        </div>
+    </li>
+</ul>
+
+<ul id="status-dropdown" class="dropdown-content">
+    <li>
+        <a status-value="1" id="btn-status-online" onclick="registerRTCStatus(this)">
+            <i class="material-icons-outlined online remove click">lens</i>
+            <span class="grey-text remove click">Disponível</span>
+        </a>
+    </li>
+    <li>
+        <a status-value="2" id="btn-status-idle" class="grey-text" onclick="registerRTCStatus(this)">
+            <i class="material-icons-outlined idle remove click">lens</i>
+            <span class="grey-text remove click">Ausente</span>
+        </a>
+    </li>
+    <li>
+        <a status-value="3" id="btn-status-no-disturbe" class="grey-text" onclick="registerRTCStatus(this)">
+            <i class="material-icons-outlined no-disturbe remove click">lens</i>
+            <span class="grey-text remove click">Não Incomodar</span>
+        </a>
+    </li>
+    <li>
+        <a status-value="0" id="btn-status-offline" class="grey-text" onclick="registerRTCStatus(this)">
+            <i class="material-icons-outlined offline remove click">lens</i>
+            <span class="grey-text remove click">Invisível</span>
+        </a>
+    </li>
+</ul>

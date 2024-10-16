@@ -1,0 +1,48 @@
+<ul id="left-sidenav" class="sidenav sidenav-fixed dark darken-2 remove boxshadow to-front">
+    <li>
+        <div class="user-view">
+            <div class="background">
+            </div>
+            <a>
+                <img id="profileImage" class="materialboxed circle profile status online" data-caption="Foto de perfil de @{{ profile.ian }} - {{ profile.name }}" src="/static/uploads/{{profile.picture}}">
+            </a>
+            <a id="profileName" href="#name" class="remove click">
+                <span class="white-text name">{{profile.name}}</span>
+            </a>
+            <a id="profileIAN" href="#email" class="remove click">
+                <span class="white-text email">@{{profile.ian}}</span>
+            </a>
+        </div>
+    </li>
+    <li class="remove padding">
+        <div class="actions active remove padding">
+            <a href="" class="btn-flat use all width remove click">
+                <i class="material-icons-outlined left">developer_board</i>
+                Administração
+            </a>
+        </div>
+        <div class="actions remove padding">
+            {{#if appBuild}}
+                <a href='/mensagens/build-dist' class="btn-flat use all width">
+            {{else}}
+                <a href='/mensagens' class="btn-flat use all width">
+            {{/if}}
+                <i class="material-icons-outlined left">chat</i>
+                Aplicação
+            </a>
+        </div>
+    </li>
+    <li class="remove-sidenav-line"><br><div class="divider"></div><br></li>
+    <li>
+        <div class="actions outline error remove padding">
+            {{#if appBuild}}
+                <a class="btn-flat use all width" onclick="distLogout();">
+            {{else}}
+                <a class="btn-flat use all width" onclick="Logout();">
+            {{/if}}
+                <i class="material-icons-outlined left">exit_to_app</i>
+                Terminar Sessão
+            </a>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,144 @@
+<style>
+.fixed-chat-input {
+    position: fixed;
+    right: 23px;
+    left: 23px;
+    bottom: 10px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 1110;
+}
+.fixed-chat-input { padding-left: 300px; }
+@media only screen and (max-width : 992px) {
+    .fixed-chat-input { padding-left: 0; }
+}
+
+@media only screen and (max-width: 992px) {
+   .chat-wrapper { height: 52vh !important; }
+}
+.chat-wrapper {
+    overflow-y: scroll;
+    height: 62vh;
+    padding: 10px;
+}
+</style>
+<section id="conversations" class="container large">
+    <div class="row">
+        {{#if friends.friends }}
+            <div class="col s12 m12 l5 max-height remove padding">
+                <div class="container large">
+                    <h5 class="logo-text">
+                        <i class="material-icons-outlined left">chat</i>
+                        Conversas
+                    </h5>
+                </div>
+                <div class="card medium transparent remove boxshadow">
+                    <div class="card-content scrollable">
+                        <ul id="conversations-all-chats" class="collection">
+                            {{#each friends.friends }}
+                                <li class="collection-item avatar z-depth-4">
+                                    <div class="status-badge {{this.status}}"></div>
+                                    <img src="/static/uploads/default.png" alt="" class="circle">
+                                    <span class="title">{{this.name}}</span>
+                                    <p>@{{this.ian}}</p>
+                                    <a chat-value="{{this.token}}" class="secondary-content pointer">
+                                        <i class="material-icons-outlined conversation-friend tooltipped" data-position="bottom" data-tooltip="Conversar">chat_bubble_outline</i>
+                                    </a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m12 l7 max-height">
+                <div id="conversations-landing" class="center">
+                    <br><br><br>
+                    <img class="responsive-img" src="/static/modules/images/message/lowkey-conversation.png">
+                    <br><br><br>
+                    <span class="grey-text">Clica num amigo para<br>começar a conversar...</span>
+                </div>
+                <div id="conversations-messages" class="hide">
+                    <div class="row">
+                        <div class="col s12 chat-top-info">
+                            <h6>NOME</h6>
+                            <span class="grey-text">IAN</span>
+                        </div>
+                    </div>
+                    <div id="messages" class="chat-wrapper"></div>
+                    <form id="chat-message" class="row">
+                        <div class="col s10">
+                            <p id='isTyping' class='helper-text grey-text center'><br></p>
+                        </div>
+                        <div class="col s10 valign-wrapper">
+                            <textarea id="input-chat-message" class="white-text valign-wrapper" maxlength="100" onkeyup="registerRTCChatTyping()"></textarea>
+                        </div>
+                        <div class="col s2">
+                            <button type="submit" class="valign-wrapper btn-flat black outline-dark-darken-2 rounded bold btn-large white-text">
+                                <i class="large material-icons">send</i>
+                            </button>
+                        </div>
+                        <style>
+                            @media only screen and (max-width : 992px) {#chat-extras { bottom: 120px !important; }}
+                        </style>
+                        <div id="chat-extras" class="fixed-action-btn">
+                            <a class="btn-floating btn-large primary outline-dark-darken-2">
+                                <i class="large material-icons-outlined">menu</i>
+                            </a>
+                            <ul>
+                                <li><a class="btn-floating red darken-3 modal-trigger" href="#sendfile-modal"><i class="material-icons large">attach_file</i></a></li>
+                                <li><a class="btn-floating orange darken-4 modal-trigger" href="#tenor" onclick="TenorHome();"><i class="material-icons large" style="font-size: 2.5rem !important;">gif</i></a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {{else}}
+
+            <div id="nofriendstotalk" class="col s12 remove padding">
+                <div class="center">
+                    <br><br><br>
+                    <img class="responsive-img" src="/static/modules/images/message/lowkey-friends-pending.png">
+                    <br><br><br>
+                    <span class="grey-text">Ainda não têm amigos para conversar!<br>Adicione alguns...</span>
+                </div>
+            </div>
+
+        {{/if}}
+    </div>
+</section>
+
+<div id="tenor" class="modal dark darken-3 bottom-sheet tenor">
+    <div class="modal-content">
+        <br>
+        <form id="tenor-form" class="container">
+            <div class="row">
+                <div class="col s2 m1">
+                    <br>
+                    <a id="tenor-home" class="btn-flat center rounded bold white-text hide" onclick="TenorHome();">
+                        <i class="material-icons-outlined left">arrow_back_ios</i>
+                    </a>
+                </div>
+                <div class="input-field col s6 m9">
+                    <input id="tenor-search" type="text" class="white-text" maxlength="30">
+                    <label for="tenor-search" class="white-label darken-3">Procure um GIF</label>
+                </div>
+                <div class="col s4 m2">
+                    <br>
+                    <button type="submit" class="btn-flat center primary rounded bold white-text" onclick="TenorSearchAttribution();">
+                        <i class="material-icons-outlined left">search</i>
+                        Procurar
+                    </button>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div id="tenor-categories" class="row"></div>
+        <div id="tenor-searched" class="row hide"></div>
+        <div id="tenor-noresults" class="row hide">
+            <div class="col s12 m6 push-m3">
+                <img class="responsive-img" src="/static/modules/images/message/lowkey-friends-pending.png">
+                <p class="center">Não foram encontrados resultados...</p>
+            </div>
+        </div>
+    </div>
+</div>

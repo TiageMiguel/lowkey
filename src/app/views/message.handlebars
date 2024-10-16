@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/static/modules/css/app/lowkey.css">
+    <link rel="stylesheet" href="/static/modules/css/materialize/materialize.css">
+    <link rel="stylesheet" href="/static/modules/css/emojis/emojionearea.css">
+
+    <script>
+        const userCredential = {{profile.id}};
+        const sessionID      = "{{ profile.sessionID }}";
+        const userName       = "{{ profile.name }}";
+        const userIAN        = "{{ profile.ian }}";
+        const userPhoto      = "{{ profile.picture }}";
+        const originalStatus = {{profile.statusnumber}};
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/modules/favicon/lowkey-icon.ico">
+    <title>Lowkey - Mensagens</title>
+
+    <style>
+        main,
+        footer  { padding-left: 250px; }
+        @media only screen and (max-width : 992px) {
+            main,
+            footer  { padding-left: 0; }
+        }
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        main { flex: 1 0 auto; }
+    </style>
+
+
+</head>
+<body class="dark darken-2 white-text">
+
+    {{> message/header }}
+    {{> message/leftsidenav this }}
+
+    <main>
+        {{> message/conversations this }}
+        {{> message/friends this }}
+        {{> message/settings this }}
+    </main>
+
+    {{> message/footer }}
+    {{> message/modals }}
+
+    <script src="/static/modules/js/libraries/p5/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="/static/modules/js/libraries/materialize/materialize.js"></script>
+    <script src="/static/modules/js/libraries/emojis/emojionearea.js"></script>
+    <script src="/static/modules/js/pages/message-page.js"></script>
+    <script src="/static/modules/js/pages/message/RTC.js"></script>
+    <script src="/static/modules/js/pages/message/tenor.js"></script>
+
+</body>
+</html>

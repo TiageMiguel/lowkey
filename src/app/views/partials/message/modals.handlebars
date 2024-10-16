@@ -1,0 +1,177 @@
+{{!-- Desactivate 2FA MODAL --}}
+<div id="desactivate-twofa-modal" class="modal dark darken-3">
+    <div class="modal-content">
+        <div class="container center">
+            <h4 class="title white-text">Desativar o Segundo Fator de Autenticação</h4>
+            <span class="grey-text text-lighten-1"> A tua Conta Lowkey está protegida! Depois de confirmares esta ação, uma camada extra de proteção deixará de existir nesta conta. Assim, sempre que iniciares sessão deixará de te ser pedido um código de autenticação.</span>
+            <form id="twofa-desactivate-form" class="row valign-wrapper">
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="twofa-desactivate-password" type="text" class="white-text" maxlength="20" onkeyup="TwoFADesactivateCardinal(this)">
+                            <label for="twofa-desactivate-password" class="white-label darken-3">Palavra-passe</label>
+                            <span id="twofa-desactivate-password-info" class="helper-text red-text"></span>
+                        </div>
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s6">
+                                    <button type="reset" class="btn-flat rounded bold outline error error-text center">
+                                        <i class="material-icons-outlined left">close</i>
+                                        LIMPAR
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button type="submit" id="twofa-desactivate-submit" class="btn-flat rounded bold error white-text center disabled">
+                                        <i class="material-icons-outlined left">save</i>
+                                        DESATIVAR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col s12 m6 l6 hide-on-small-and-down">
+                    <br><br>
+                    <img class="responsive-img right" src="/static/modules/images/modals/2fa/lowkey-delete.png">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{!-- Activate 2FA MODAL --}}
+<div id="activate-twofa-modal" class="modal dark darken-3">
+    <div class="modal-content">
+        <div class="container center">
+            <h4 class="title white-text">Ativar o Segundo Fator de Autenticação</h4>
+            <span class="grey-text text-lighten-1"> A tua Conta Lowkey não está protegida! Depois de confirmares esta ação,
+                uma camada extra de proteção será ativa nesta conta. Assim, sempre que iniciares sessão será-te-á pedido um código de autenticação.</span>
+            <form id="twofa-activate-form" class="row valign-wrapper">
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="twofa-activate-password" type="text" class="white-text" maxlength="20" onkeyup="TwoFAActivateCardinal(this)">
+                            <label for="twofa-activate-password" class="white-label darken-3">Palavra-passe</label>
+                            <span id="twofa-activate-password-info" class="helper-text red-text"></span>
+                        </div>
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="col s6">
+                                    <button type="reset" class="btn-flat rounded bold outline error error-text center">
+                                        <i class="material-icons-outlined left">close</i>
+                                        LIMPAR
+                                    </button>
+                                </div>
+                                <div class="col s6">
+                                    <button type="submit" id='twofa-activate-submit' class="btn-flat rounded bold outline-primary primary-text center disabled">
+                                        <i class="material-icons-outlined left">save</i>
+                                        ATIVAR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6 l6 hide-on-small-and-down">
+                    <br>
+                    <img class="responsive-img right" src="/static/modules/images/modals/2fa/lowkey-delete.png">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{!-- FRIEND - ADD --}}
+<div id="friend-add-modal" class="modal dark darken-3 scale-transition scale-in">
+    <form id="addfriend-form">
+        <div class="modal-content">
+            <div class="modal-header center"><br>
+                <h4 class="title">Adicione um Amigo</h4>
+                <span class="grey-text lighten-1">Crie novas amizades</span>
+            </div>
+            <div class="row container white-text">
+                <div class="col s12 m6 l6">
+                    <div class="row">
+                        <br><br><br><br>
+                        <div class="input-field col s12">
+                            <input id="addfriend-name" type="text" class="white-text" maxlength="100" onkeyup="AddFriendCardinal(this)">
+                            <label for="addfriend-name" class="white-label darken-3">Nome de Utilizador ou Email</label>
+                            <span id="addfriend-name-info" class="helper-text red-text"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m5 l5 hide-on-small-and-down container right">
+                    <br><img class="responsive-img right" src="/static/modules/images/message/lowkey-friends-add.png">
+                </div>
+                <div class="col s12 row">
+                    <div class="col s2 m2 l2 left">
+                        <a id="addfriend-goback" class="btn-flat center rounded bold white-text">
+                            <i class="material-icons-outlined left">arrow_back_ios</i>
+                        </a>
+                    </div>
+                    <div class="col s6 m5 l5 left">
+                        <button id='addfriend-submit' type="submit"class="btn-flat center outline-primary rounded bold primary-text disabled">
+                            <i class="material-icons-outlined left">person_add</i>
+                            Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{{!-- CHAT - SEND FILE --}}
+<div id="sendfile-modal" class="modal dark darken-3 scale-transition scale-in">
+    <div class="modal-content">
+        <div class="modal-header center"><br>
+            <h4 class="title">Envie um Ficheiro</h4>
+            <span class="grey-text lighten-1">Envie qualquer ficheiro, até um limite de 100mb!</span>
+        </div>
+        <form id='form-sendfile' class="container">
+            <br>
+            <div class="row">
+                 <div class="input-field col s12">
+                    <textarea id="sendfile-message" class="white-text" maxlength="100"></textarea>
+                </div>
+            </div>
+            <div class="file-field input-field center">
+                <div class="btn-flat rounded primary-text outline-primary">
+                    <i class="material-icons-outlined left">add</i>
+                    <span>Ficheiro</span>
+                    <input id="sendfile-input" type="file" onchange="ConversationUploadFileCardinal()">
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col s12 file-path-wrapper" style="overflow: unset !important; padding-left: 0 !important;">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s6 center">
+                    <button type="reset" class="btn-flat rounded bold outline error error-text center" onclick="ConversationUploadFileReset()">
+                        <i class="material-icons-outlined left">close</i>
+                        LIMPAR
+                    </button>
+                </div>
+                <div class="col s6 center">
+                    <button type="submit" id='sendfile-submit' class="btn-flat disabled rounded bold outline-primary primary-text center">
+                        <i class="material-icons left">send</i>
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{{!-- DELETE ACCOUNT MODAL --}}
+<div id="deleteaccount-modal" class="modal dark darken-3 scale-transition scale-in">
+    <div class="modal-content">
+        <div class="modal-header center"><br>
+            <h4 class="title">Apague a Sua Conta</h4>
+            <span class="grey-text lighten-1">O código de segurança para apagar a conta, foi enviado para o seu email!</span>
+        </div>
+    </div>
+</div>
