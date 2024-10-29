@@ -1,0 +1,237 @@
+<div class="hide-on-med-and-down">
+    <div class="vertical-divider"></div>
+</div>
+
+<div id="homepage" class="container large hide">
+    <div class="row">
+        <div id="friends" class="col s12">
+            <div class="fixed-action-btn">
+                <a id="addfriends" class="btn-floating btn-large primary tooltipped modal-trigger" href="#friend-add-modal" data-position="top" data-tooltip="Adicione um Amigo">
+                    <i class="large material-icons-round">person_add</i>
+                </a>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col s12 m12 l5">
+                    <div class="row">
+                        <div class="col s12">
+                            <a href="#friend-add-modal" class="btn-flat center outline-primary rounded bold primary-text modal-trigger">
+                                <i class="material-icons-outlined left">person_add</i>
+                                Adicionar um amigo
+                            </a>
+                        </div>
+                        <div class="col s12"><br></div>
+                        <div class="col s12 actions active">
+                            <a id="myfriends-all" dataTarget="friends-all" class="btn-flat use all width">
+                                <i class="material-icons-outlined left">people</i>
+                                Todos
+                                {{#if friends.friendsCounter }}
+                                    <span id="friends-all-counter" class="white black-text new badge pending right" counter="{{friends.friendsCounter}}" data-badge-caption="Amigo(s)">{{friends.friendsCounter}}</span>
+                                {{else}}
+                                    <span id="friends-all-counter" class="white black-text new badge pending right" counter="0" data-badge-caption="Amigo(s)">0</span>
+                                {{/if}}
+                            </a>
+                        </div>
+                        <div class="col s12 actions">
+                            <a id="myfriends-online" dataTarget="friends-online" class="btn-flat use all width">
+                                <i class="material-icons-outlined left">whatshot</i>
+                                Disponiveis
+                                 {{#if friends.friendsCounter }}
+                                    <span id="friends-online-counter" class="white black-text new badge pending right" counter="{{friends.onlineCounter}}" data-badge-caption="Amigo(s)">{{friends.onlineCounter}}</span>
+                                {{else}}
+                                    <span id="friends-online-counter" class="white black-text new badge pending right" counter="0" data-badge-caption="Amigo(s)">0</span>
+                                {{/if}}
+                            </a>
+                        </div>
+                        <div class="col s12 actions">
+                            <a id="myfriends-pending" dataTarget="friends-pending" class="btn-flat use all width">
+                                <i class="material-icons-outlined left">how_to_reg</i>
+                                Pedidos
+                                {{#if friends.pendingCounter }}
+                                    <span id="friends-pending-counter" class="white black-text new badge pending right" counter="{{friends.pendingCounter}}" data-badge-caption="pedido(s)">{{friends.pendingCounter}}</span>
+                                {{else}}
+                                    <span id="friends-pending-counter" class="white black-text new badge pending right" counter="0" data-badge-caption="pedido(s)">0</span>
+                                {{/if}}
+                            </a>
+                        </div>
+                        {{!-- <div class="col s12 actions">
+                            <a id="myfriends-blocked"dataTarget="friends-blocked" class="btn-flat use all width">
+                                <i class="material-icons-outlined left">person_add_disabled</i>
+                                Bloqueados
+                            </a>
+                        </div> --}}
+                    </div>
+                </div>
+                <div class="col s12 m12 l7">
+                    <div class="container">
+                        <section id="friends-all">
+                            <div class="card medium dark darken-2 remove boxshadow" style="background-color: transparent !important;">
+                                <div class="card-content scrollable">
+                                    <ul class="collection">
+                                        {{#if friends.friends }}
+                                            {{#each friends.friends }}
+                                                <li friend-value="{{this.token}}" class="collection-item avatar">
+                                                    <div class="status-badge {{this.status}}">
+                                                        <img src="/static/uploads/{{this.picture}}" class="circle tooltipped" data-position="bottom" data-tooltip="Offline">
+                                                    </div>
+                                                    <span class="title">{{this.name}}</span>
+                                                    <p>@{{this.ian}}</p>
+                                                    <a chat-value="{{this.token}}" href="#modal-{{this.token}}" class="secondary-content modal-trigger">
+                                                        <i class="material-icons">more_horiz</i>
+                                                    </a>
+                                                </li>
+                                                <div id="modal-{{this.token}}" friend-modal="{{this.token}}" class="modal dark darken-3 bottom-sheet">
+                                                    <div class="modal-content container">
+                                                        <div class="modal-header center"><br>
+                                                            <h4 class="title white-text">Perfil de: {{this.name}}</h4>
+                                                            <span class="grey-text lighten-1">@{{this.ian}}</span>
+                                                        </div>
+                                                        <br><br><br><br>
+                                                        <div class="container center">
+                                                            <div class="row">
+                                                                {{!-- <div class="col s12 m4 l4">
+                                                                    <a friend="{{this.token}}" class="btn-flat rounded bold outline-primary primary-text center">
+                                                                        <i class="material-icons-outlined left">chat</i>
+                                                                        conversar
+                                                                    </a>
+                                                                    <br><br>
+                                                                </div>
+                                                                <div class="col s12 m4 l4">
+                                                                    <a friend="{{this.token}}" friend-name="{{this.name}}" class="btn-flat outline error rounded bold error-text center">
+                                                                        <i class="material-icons-outlined left">block</i>
+                                                                        Bloquear
+                                                                    </a>
+                                                                    <br><br>
+                                                                </div> --}}
+                                                                <div class="col s12">
+                                                                    <a friend="{{this.token}}" friend-name="{{this.name}}" class="btn-flat error rounded bold white-text center" onclick="FriendsRemoveFriend(this);">
+                                                                        <i class="material-icons-outlined left">lock_open</i>
+                                                                        remover
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {{/each}}
+                                        {{else}}
+                                            <div id="NoAllFriends" class="row">
+                                                <div class="center">
+                                                    <br><br><br>
+                                                    <img class="responsive-img" src="/static/modules/images/message/lowkey-friends-online.png">
+                                                    <br><br><br>
+                                                    <span class="grey-text">Ainda não têm amigos.<br>Adicione alguns...</span>
+                                                </div>
+                                            </div>
+                                        {{/if}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="friends-online" class="hide">
+                            <div class="card medium dark darken-2 remove boxshadow" style="background-color: transparent !important;">
+                                <div class="card-content scrollable">
+                                    <ul class="collection">
+                                        {{#if friends.online }}
+                                            {{#each friends.online }}
+                                                <li friend-value="{{this.token}}" class="collection-item avatar">
+                                                    <div class="status-badge {{this.status}}">
+                                                        <img src="/static/uploads/{{this.picture}}" class="circle tooltipped" data-position="bottom" data-tooltip="Offline">
+                                                    </div>
+                                                    <span class="title">{{this.name}}</span>
+                                                    <p>@{{this.ian}}</p>
+                                                    <a chat-value="{{this.token}}" href="#modal-{{this.token}}" class="secondary-content modal-trigger">
+                                                        <i class="material-icons">more_horiz</i>
+                                                    </a>
+                                                </li>
+                                            {{/each}}
+                                        {{else}}
+                                            <div id="NoAllFriends" class="row">
+                                                <div class="center">
+                                                    <br><br><br>
+                                                    <img class="responsive-img" src="/static/modules/images/message/lowkey-friends-offline.png">
+                                                    <br><br><br>
+                                                    <span class="grey-text">Não tem amigos online :(</span>
+                                                </div>
+                                            </div>
+                                        {{/if}}
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <section id="friends-pending" class="hide">
+                            <div class="card extra large dark darken-2 remove boxshadow" style="background-color: transparent !important;">
+                                <div class="card-content scrollable">
+                                    <ul class="collection">
+                                        {{#if friends.pending }}
+                                            {{#each friends.pending }}
+                                                <li class="collection-item avatar hoverable" friend-value="{{this.token}}" friend-name="{{this.name}}" friend-ian="{{this.ian}}">
+                                                    <img src="/static/uploads/{{this.picture}}" alt="" class="circle">
+                                                    <span class="title">{{this.name}}</span>
+                                                    <p>@{{this.ian}}</p>
+                                                    <a class="secondary-content">
+                                                        <div class="secondary-content right">
+                                                            <a class="btn-flat rounded pointer pending-hover right" onclick="FriendsAcceptFriendRequest(this);">
+                                                                <i class="material-icons-outlined">done</i>
+                                                            </a>
+                                                            <a class="btn-flat rounded pointer pending-hover right" onclick="FriendsRejectFriendRequest(this);">
+                                                                <i class="material-icons-outlined">close</i>
+                                                            </a>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            {{/each}}
+                                        {{else}}
+                                            <div id="NoPendingFriends" class="row">
+                                                <div class="center">
+                                                    <br><br><br>
+                                                    <img class="responsive-img" src="/static/modules/images/message/lowkey-friends-pending.png">
+                                                    <br><br><br>
+                                                    <span class="grey-text">Não há pedidos de amizade pendentes...</span>
+                                                </div>
+                                            </div>
+                                        {{/if}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="friends-blocked" class="hide">
+                            <div class="card extra large dark darken-2 remove boxshadow" style="background-color: transparent !important;">
+                                <div class="card-content scrollable">
+                                    <ul class="collection">
+                                        {{#if friends.blocked }}
+                                            {{#each friends.blocked }}
+                                                {{#each this}}
+                                                    <li class="collection-item avatar">
+                                                        <img src="/static/uploads/default.png" alt="" class="circle">
+                                                        <span class="title">{{this.name}}</span>
+                                                        <p>@{{this.ian}}</p>
+                                                        <a href="#chat" chat-value="{{this.token}}" class="secondary-content"><i
+                                                                class="material-icons">more_horiz</i></a>
+                                                    </li>
+                                                {{/each}}
+                                            {{/each}}
+                                        {{else}}
+                                            <div class="row">
+                                                <div class="center">
+                                                    <br><br><br>
+                                                    <img class="responsive-img" src="/static/modules/images/message/lowkey-friends-blocked.png">
+                                                    <br><br><br>
+                                                    <span class="grey-text">Não existem amigos bloqueados...</span>
+                                                </div>
+                                            </div>
+                                        {{/if}}
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

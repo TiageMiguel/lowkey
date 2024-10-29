@@ -1,0 +1,79 @@
+<div id='registerModalFile' class='modal dark darken-3 scale-transition scale-in'>
+    <section id='register-success' class="hide">
+        <div class="modal-content">
+            <div class="container center">
+                <h4 class="title"> Confirme a sua conta!</h4>
+                <span class="grey-text text-lighten-1">
+                    Um email de confirmção de conta foi enviado para:
+                </span> <br>
+                <span id="success-email" class="grey-text text-lighten-2"></span>
+            </div>
+        </div>
+        <div class="center">
+            <img class='responsive-img' src='/static/modules/images/modals/register/lowkey-register.png'>
+        </div> <br> <br>
+    </section>
+    <form id='register-form'>
+        <div class='modal-content'>
+            <div class="center">
+                <h4 class="center title">Crie uma Conta</h4>
+                <span class="center grey-text">Mensagens simples e seguras!</span>
+            </div>
+            <div class="row container white-text"> <br>
+                <div class="col s12">
+                    <div class="row">
+                        <div class='input-field col s12 m6 l6'>
+                            <input id='register-name' name='register-name' type='text' class='white-text' maxlength='20' onkeyup="registerCardinal()">
+                            <label for='register-name' class="white-label darken-3">Nome</label>
+                            <span id='register-name-info' class='helper-text red-text'></span>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <input id="register-ian" name='register-ian' type="text" class="white-text" data-length="16"
+                                maxlength="16" onkeyup="registerCardinal()">
+                            <label for="register-ian" class="white-label darken-3">Nome de Utilizador</label>
+                            <span id='register-ian-info' class='helper-text red-text'></span>
+                        </div>
+                        <div class='input-field col s12'>
+                            <input id='register-email' name='register-email' type='email' class='white-text' maxlength='100' onkeyup="registerCardinal()">
+                            <label for='register-email' class="white-label darken-3">Endereço Eletrónico (email)</label>
+                            <span id='register-email-info' class='helper-text red-text'></span>
+                        </div>
+                        <div class='input-field col s12 m6 l6'>
+                            <input id='register-password' name='register-password' type='password' class='white-text' data-length="16" maxlength='16' onkeyup="registerCardinal()">
+                            <label for='register-password' class="white-label darken-3">Palavra-passe</label>
+                            <span id='register-password-info' class='helper-text red-text'></span>
+                        </div>
+                        <div class='input-field col s12 m6 l6'>
+                            <input id='register-cpassword' name='register-cpassword' type='password' class='white-text' data-length="16" maxlength='16' onkeyup="registerCardinal()">
+                            <label for='register-cpassword' class="white-label darken-3">Confirmar a Palavra-passe</label>
+                            <span id='register-cpassword-info' class='helper-text red-text'></span>
+                        </div>
+                        <div class='col s12 row'>
+
+                            <div class="col s6">
+                                <button type="reset" class="right btn-flat outline error rounded bold error-text">
+                                    <i class="material-icons left">close</i>
+                                    LIMPAR
+                                </a>
+                            </div>
+                            <div class="col s6">
+                                <button type="submit" id="register-btn" class="btn-flat left center outline-primary rounded bold primary-text disabled">
+                                    <i class="material-icons-outlined left">exit_to_app</i>
+                                    REGISTAR
+                                </button>
+                            </div>
+                            <div class="col s12">
+                                <div class="input-field center">
+                                    <p class="helper-text grey-text" style="display: inline-flex !important;"> Já têm
+                                        conta? 
+                                        <a id='register-gologin' style="cursor: pointer;" class="helper-text blue-text">Inicie sessão!</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

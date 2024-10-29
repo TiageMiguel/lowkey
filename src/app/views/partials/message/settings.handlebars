@@ -1,0 +1,254 @@
+<section id="settings" class="container large hide">
+    <div class="row">
+
+        {{!-- Settings: Navigation --}}
+        <section class="col s12 m4 l4">
+            <div class="row">
+                <div class="col s12 actions active">
+                    <a id="myAccount" dataTarget="update-profile" class="btn-flat use all width">
+                        <i class="material-icons-outlined left">person</i>
+                        A Minha Conta
+                    </a>
+                </div>
+                <div class="col s12 actions">
+                    <a id="mySecurity" dataTarget="update-security" class="btn-flat use all width">
+                        <i class="material-icons-outlined left">lock</i>
+                        Segurança
+                    </a>
+                </div>
+                <div class="col s12 actions">
+                    <a id="changeLogs" dataTarget="changelogs" class="btn-flat use all width">
+                        <i class="material-icons left">phonelink</i>
+                        Sessões
+                    </a>
+                </div>
+                <div class="col s12"><br><div class="divider"></div><br></div>
+                <div class="col s12 actions outline error">
+                    {{#if appBuild}}
+                        <a class="btn-flat use all width" onclick="distLogout();">
+                    {{else}}
+                        <a class="btn-flat use all width" onclick="Logout();">
+
+                    {{/if}}
+                        <i class="material-icons-outlined left">exit_to_app</i>
+                        Terminar Sessão
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        {{!-- Settings: Different Sections --}}
+        <div class="col s12 m8 l8">
+
+            {{!-- Settings: Profile --}}
+            <section id='update-profile' class="container">
+                <form id="form-update-profile">
+                    <div class="row">
+                        <blockquote>
+                            <h5>Informações sobre a conta</h5>
+                            <script>
+                                let oldDate = '{{ profile.created }}';
+                                let newDate = new Date(oldDate);
+                                const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+                                newDate = {
+                                    day: newDate.getDate(),
+                                    month: months[newDate.getMonth()],
+                                    year: newDate.getFullYear()
+                                }
+                                document.writeln('<span class="grey-text">Juntou-se a '+ newDate.day +' de ' + newDate.month + ' de ' + newDate.year +'</span>');
+                            </script>
+                        </blockquote>
+                        <div class="col s12">
+                            <div class="row valign-wrapper">
+                                <div class="col s6">
+                                    <img id="update-profile-image" class="materialboxed circle" height="120" width="120" data-caption="Foto de perfil de @{{ profile.ian }} - {{ profile.name }}" value="/static/uploads/{{profile.picture}}" src="/static/uploads/{{profile.picture}}">
+                                </div>
+                                <div class="col s6">
+                                    <div class="file-field input-field outline-primary rounded" style="position: absolute;">
+                                        <div class="btn-flat right">
+                                            <span class="primary-text bold">
+                                                <i class="material-icons-outlined left">add_a_photo</i>
+                                                alterar
+                                            </span>
+                                            <input type="file" id="update-profile-picture-input" accept="image/*" onchange="updateProfilePicturePreview(this)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='input-field col s6'>
+                            <input id='update-profile-name' type='text' maxlength='30' value="{{ profile.name }}" onkeyup="updateProfileCardinal()">
+                            <label for='update-profile-name' class="white-label">Nome Pessoal</label>
+                            <span class='helper-text grey-text'></span>
+                            <span id='update-profile-name-info' class='helper-text red-text'></span>
+                        </div>
+                        <div class='input-field col s6'>
+                            <input id='update-profile-ian' type='text' maxlength='30' value="{{ profile.ian }}" onkeyup="updateProfileCardinal()">
+                            <label for='update-profile-ian' class="white-label">Nome de Utilizador</label>
+                            <span id='update-profile-ian-info' class='helper-text red-text'></span>
+                        </div>
+                        <div class='input-field col s12'>
+                            <input id='update-profile-email' type='email' maxlength='30' value="{{ profile.email }}" onkeyup="updateProfileCardinal()">
+                            <label for='update-profile-email' class="white-label">Endereço Eletrónico</label>
+                            <span id='update-profile-email-info' class='helper-text red-text'></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6">
+                            <a id="update-profile-reset" class="left btn-flat outline error rounded bold error-text">
+                                <i class="material-icons left">close</i>
+                                LIMPAR
+                            </a>
+                        </div>
+                        <div class="col s6">
+                            <button type="submit" id="update-profile-submit" class="right btn-flat center outline-primary rounded bold primary-text disabled">
+                                <i class="material-icons-outlined left">save</i>
+                                ATUALIZAR
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                {{!-- <div>
+                    <blockquote>
+                        <h5>Definições Avançadas</h5>
+                    </blockquote>
+                    <div class="row">
+                        <div class="col s12">
+                            <span class="grey-text">Se achas que não vais voltar a utilizar o Lowkey e gostarias de eliminar a tua conta, podemos
+                                tratar disto por ti. Lembra-te que não vai ser possivel reativar ou recuperar qualquer conteúdo ou informações que
+                                tenhas adicionado.
+                                <br> Se, mesmo assim, quiseres que a tua conta seja eliminada, clica em "Eliminar a Minha Conta" e confirma a ação.
+                            </span>
+                        </div>
+                        <div class="col s12">
+                            <br>
+                            <a class="btn-flat red center outline error red rounded bold white-text modal-trigger" href="#deleteaccount-modal">
+                                <i class="material-icons-outlined left">delete</i>
+                                ELIMINAR A MINHA CONTA
+                            </a>
+                        </div>
+                    </div>
+                </div> --}}
+            </section>
+
+            {{!-- Settings: Security --}}
+            <section id="update-security" class="container hide">
+                <div class="row">
+                    <blockquote>
+                        <h5>Segurança da conta</h5>
+                        {{#if profile.twofa }}
+                            <span id="protected-account" class="grey-text">A sua conta está protegida!</span>
+                        {{else}}
+                            <span id="protected-account" class="grey-text">Para ter a sua conta mais protegida, ative o Segundo Fator de Autenticação (2FA)</span>
+                        {{/if}}
+                    </blockquote>
+                    <div class="col s12">
+                        <div class="row">
+                            <form id="form-security">
+                                <div class="col s12 m6 input-field">
+                                    <input id='update-security-current' type='password' maxlength='20' onkeyup="updateSecurityCardinal()">
+                                    <label for='update-security-current' class="white-label">Palavra-Passe Atual</label>
+                                    <span id='update-security-current-info' class='helper-text red-text'></span>
+                                </div>
+                                <div class="col s12 m6 input-field">
+                                    <input id='update-security-new' type='password' maxlength='20' onkeyup="updateSecurityCardinal()">
+                                    <label for='update-security-new' class="white-label">Nova Palavra-Passe</label>
+                                    <span id='update-security-new-info' class='helper-text red-text'></span>
+                                </div>
+                                <div class="col s12">
+                                    <span class="grey-text">
+                                        <div class="bold">INFORMAÇÃO</div>
+                                        A palavra-passe deve ter no minimo 5 caracteres e no maximo 20 caracteres!
+                                    </span>
+                                </div>
+                                <div class="col s12">
+                                    <div class="row">
+                                        <br>
+                                        <div class="col s6">
+                                            <button id='update-security-clear' type="reset" class="left btn-flat outline error rounded bold error-text">
+                                                <i class="material-icons left">close</i>
+                                                LIMPAR
+                                            </button>
+                                        </div>
+                                        <div class="col s6">
+                                            <button type="submit" id="update-security-submit" class="right btn-flat center outline-primary rounded bold primary-text disabled">
+                                                <i class="material-icons-outlined left">save</i>
+                                                ATUALIZAR
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col s12">
+                        <blockquote>
+                            <h5>Opções Avançadas de Segurança</h5>
+                            <span class="grey-text">Segundo Fator de Autenticação</span>
+                        </blockquote>
+                        <div class="row">
+                            <div class="col s12">
+                                {{#if profile.twofa }}
+                                    <span id="twofa-info" class="grey-text">
+                                        <div class="bold">CONTA PROTEGIDA</div>
+                                        <i class="material-icons-outlined left">verified_user</i>
+                                        Segundo Fator de Autenticação está Ativo
+                                    </span>
+                                {{else}}
+                                    <span id="twofa-info" class="grey-text">Protege a tua Conta Lowkey com uma camada extra de segurança. Depois de ativo, sempre que
+                                    iniciares sessão vai ser te pedido um código de autenticação que será enviado para o seu endereço eletrónico.</span>
+                                {{/if}}
+                            </div>
+                            <div class="col s12">
+                                <br>
+                                {{#if profile.twofa }}
+                                    <a id="twofa-modal-btn" class="btn-flat error rounded bold white-text modal-trigger" href="#desactivate-twofa-modal">
+                                        <i class="material-icons-outlined left">lock_open</i>
+                                        DESATIVAR 2FA
+                                    </a>
+                                {{else}}
+                                    <a id="twofa-modal-btn" class="btn-flat primary rounded bold white-text pulse modal-trigger" href="#activate-twofa-modal">
+                                        <i class="material-icons-outlined left">lock</i>
+                                        ATIVAR 2FA
+                                    </a>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {{!-- Settings: Changelogs --}}
+            <section id="changelogs" class="container hide">
+                <div class="row">
+                    <blockquote>
+                        <h5>Sessões Ativas</h5>
+                        <span class="grey-text">Gerencie as suas sessões</span>
+                    </blockquote>
+                    <div class="col s12 remove padding">
+                        <br>
+                        <ul class="collection">
+                            <li class="collection-item avatar">
+                                <i class="material-icons circle small">important_devices</i>
+                                <span class="title">Sessão Atual - {{sessions.current.os}} ({{sessions.current.browser}}{{#if sessions.current.mobile}} - Móvel{{/if}})</span>
+                                <p>Entrou a: {{sessions.current.date}}</p>
+                                {{!-- <a class="secondary-content red-text text-lighten-1 session-close">Terminar Sessão</a> --}}
+                            </li>
+                            {{#each sessions.sessions}}
+                                <li class="collection-item avatar">
+                                    <i class="material-icons circle small">devices</i>
+                                    <span class="title">Sessão - {{this.os}} ({{this.browser}}{{#if this.mobile}} - Móvel{{/if}})</span>
+                                    <p>Entrou a: {{this.date}}
+                                        <br>
+                                        IP: {{this.ip}}
+                                    </p>
+                                    {{!-- <a class="secondary-content red-text text-lighten-1 session-close" session-socket="{{this.socket}}">Terminar Sessão</a> --}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

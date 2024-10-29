@@ -1,0 +1,59 @@
+<div id="login-content" class="container">
+    <div class="container">
+        <div class="row valign-wrapper">
+            <div class="col s12 valign-wrapper">
+                <div class="outline-dark-darken-2 card dark rounded darken-3">
+                    <div class="card-content white-text">
+                        <div class="center">
+                            <h4 class="card-title title center">Boas-vindas</h4>
+                            <span class="grey-text center">Estamos muito animados em te ver novamente!</span>
+                        </div>
+                        <form id="login-form" class="container">
+                            <div class="row white-text">
+                                <div class="col s12">
+                                    <div class="row">
+                                        <div class='input-field col s12'>
+                                            <input id='login-name' name='login-name' type='text' maxlength='100' onkeyup="loginCardinal()">
+                                            <label for='login-name' class="white-label darken-3">Nome de Utilizador ou Email</label>
+                                            <span id='login-name-info' class='helper-text red-text'></span>
+                                        </div>
+                                        <div class='input-field col s12'>
+                                            <input id='login-password' name='login-password' type='password' onkeyup="loginCardinal()">
+                                            <label for='login-password' class="white-label darken-3">Palavra-passe</label>
+                                            <span id='login-password-info' class='helper-text red-text'></span>
+                                            <p class="helper-text grey-text" style="display: inline-flex !important;">
+                                                <a id='login-goforgotpassword' style="cursor: pointer;" class="helper-text primary-text">Esqueceu-se da palavra-passe?</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='col s12 row'>
+                                    <div class="col s6">
+                                        <button type="reset" class="left btn-flat outline error rounded bold error-text">
+                                            <i class="material-icons left">close</i>
+                                            LIMPAR
+                                        </button>
+                                    </div>
+                                    <div class="col s6">
+                                        <button type="submit" id="login-btn" class="btn-flat right center outline-primary rounded bold primary-text disabled">
+                                            <i class="material-icons-outlined left">exit_to_app</i>
+                                            ENTRAR
+                                        </button>
+                                    </div>
+                                    <div class="col s12">
+                                        <div class="input-field center">
+                                            <p class="helper-text grey-text" style="display: inline-flex !important;"> Ainda não têm
+                                                conta? 
+                                                <a id='login-goregister' style="cursor: pointer;" class="helper-text primary-text">Registre-se</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
